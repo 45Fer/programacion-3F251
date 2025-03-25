@@ -1,0 +1,142 @@
+@startuml Diagrama
+
+class Mario
+class Tiempo
+class Nivel
+class Punto 
+class Vida
+class Fisica
+class Opcion 
+class Enemigo 
+class Plataforma
+class Musica
+class Movimiento
+class Habilidad
+class Animacion
+class Recompesa
+class Pause
+class Continuar
+class Reiniciar
+class Goomba
+class KoopaTroopa
+class CuboVacio
+class CuboSolido
+class CuboEnigma
+class FinJuego
+class PartidaCurso
+class Reinicio
+class Brinco
+class Desplazamiento
+class AumentoTamano
+class Fuego
+class DecrementoTamano
+class Hongo
+class FlorFuego
+class Moneda
+class Golpe
+class Toma 
+class Daño
+class Rompe
+class Partida
+
+Jugador "1" o-- "2" Opcion
+Jugador "1" o-- "1" Mario
+Jugador "1" o-- "1, 2" Movimiento
+
+Mario "1" o-- "1" Plataforma
+Mario "1" o-- "2" Movimiento 
+Mario "1" o-- "*" Recompesa
+Mario "1" o-- "*" Nivel
+Mario "1" o-- "1" Golpe
+Mario "1" o-- "1" Parar
+Mario "1" o-- "1" Enemigo
+Mario "1" o-- "1" Daño
+Mario "1" o-- "1" Rompe
+Mario "1" *-- "*" Punto 
+Mario "1" *-- "*" Vida
+Mario "1" *-- "*" Toma
+
+Nivel "1" *-- "*" Recompesa
+Nivel "1" *-- "*" Enemigo 
+Nivel "1" *-- "3" Musica
+Nivel "1" *-- "*" Plataforma
+Nivel "1" *-- "1" Mario
+Nivel "1" *-- "1" Tiempo 
+Nivel "1" o-- "1" Partida
+
+Movimiento "1" o-- "*" Animacion
+Movimiento "1" o-- "*" Fisica
+
+Recompesa "1" *-- "1" Habilidad 
+
+Enemigo "1" o-- "1" Movimiento
+Enemigo "1" o-- "1" Pararse 
+Enemigo "1" o-- "1" Plataforma
+
+Pararse "1" o-- "*" Plataforma
+
+Pause --|> Opcion
+Continuar --|> Opcion
+Reiniciar --|> Opcion
+
+Goomba --|> Enemigo
+KoopaTroopa --|> Enemigo
+
+CuboVacio --|> Plataforma 
+CuboSolido --|> Plataforma 
+CuboEnigma --|> Plataforma 
+
+FinJuego --|> Musica 
+PartidaCurso --|> Musica 
+Reinicio --|> Musica
+
+Brinco --|> Movimiento 
+Desplazamiento --|> Movimiento
+
+AumentoTamano --|> Habilidad
+Fuego --|> Habilidad 
+DecrementoTamano --|> Habilidad
+
+Hongo --|> Recompesa 
+FlorFuego --|> Recompesa 
+Moneda --|> Recompesa
+
+class Opcion{
++ Pausar ()
++ Continuar ()
++ Reiniciar ()
+}
+
+class Movimiento{
++ Brincar():Animacion
++ Desplazar():Animacion
+}
+
+class Enemigo{
++ Golpear():Punto
++ Dañar()
+}
+
+class Plataforma{
++ Romper()
++ Parar()
+}
+
+class Recompesa{
++ Tomar()
+}
+
+class Mario{
+- Punto: punto[]
+- Vida: vidas[]
+}
+
+class Nivel{
+- Mario: marioPartida[1]
+- Tiempo: tiempo[]
+- Recompesa: items[]
+- Enemigo: enemigos[]
+- Musica: musica[9] 
+}
+
+@enduml
