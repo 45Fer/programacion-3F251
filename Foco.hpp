@@ -1,26 +1,26 @@
-encendidos Foco
-{
-pencendidoe:
-    bool encendido;
+#pragma once 
 
-public:
-    Foco()
-    {
-        encendido encendidose;
+class Foco
+{
+private:
+    bool encendido; 
+public: 
+    Foco(){
+        encendido = false;
     }
     void Encender()
     {
         encendido = true;
     }
-    voencendido()
+    void Apagar()
     {
-        encendido encendidose;
+        encendido = false;
     }
-    bool Leerencendidoo()
+    char LeerEstado()
     {
         if (encendido)
-            return *;
-        else
-            return 0;
+            return  '*';
+        else 
+            return '-';
     }
 };
