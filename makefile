@@ -13,5 +13,11 @@ run : $(EXE)
 memoria : bin/memoria
 	./$<
 
+archivos : bin/archivos
+	./$<
+
 bin/memoria : src/memoria.cpp
+	$(CXX) $< -o $@ $(LIB) $(INCLUDE) -std=c++17
+
+bin/archivos : src/archivos.cpp
 	$(CXX) $< -o $@ $(LIB) $(INCLUDE) -std=c++17
